@@ -1,0 +1,21 @@
+stages:
+  data_load:
+    cmd: python data_loader.py
+    deps:
+      - data_loader.py
+    outs:
+      - train.csv
+      - test.csv
+
+  train:
+    cmd: python train_model.py
+    deps:
+      - train_model.py
+      - train.csv
+      - test.csv
+    outs:
+      - models/SVC.pkl
+      - models/AdaBoostClassifier.pkl
+      - models/GradientBoostingClassifier.pkl
+      - models/RandomForestClassifier1.pkl
+      - models/RandomForestClassifier2.pkl
